@@ -10,7 +10,7 @@
 
 // vSphere Credentials
 vsphere_endpoint            = "poxcs-vc-ct-01.plusonex.com"
-vsphere_username            = "svc-packer@vsphere.com"
+vsphere_username            = "svc-packer@vsphere.local"
 vsphere_password            = "Q=LCEIuHhn=WTUUn5Hcx"
 vsphere_insecure_connection = true
 
