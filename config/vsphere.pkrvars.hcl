@@ -9,17 +9,17 @@
 */
 
 // vSphere Credentials
-vsphere_endpoint            = "sfo-w01-vc01.example.com"
-vsphere_username            = "svc-packer-vsphere@example.com"
-vsphere_password            = "VMw@re123!"
-vsphere_insecure_connection = false
+vsphere_endpoint            = "poxcs-vc-ct-01.plusonex.com"
+vsphere_username            = "svc-packer@vsphere.com"
+vsphere_password            = "Q=LCEIuHhn=WTUUn5Hcx"
+vsphere_insecure_connection = true
 
 // vSphere Settings
-vsphere_datacenter                     = "sfo-w01-dc01"
-vsphere_cluster                        = "sfo-w01-cl01"
+vsphere_datacenter                     = "CAPETOWN-DATACENTER"
+vsphere_cluster                        = "CT2-CLUSTER-01"
 //vsphere_host                         = "sfo-w01-esx01"
-vsphere_datastore                      = "sfo-w01-cl01-ds-vsan01"
-vsphere_network                        = "sfo-w01-seg-dhcp"
-vsphere_folder                         = "sfo-w01-fd-templates"
+vsphere_datastore                      = "CT2-Migration-Vol-01"
+vsphere_network                        = "Managment-10.3.9.x-VLAN870"
+vsphere_folder                         = "Templates"
 //vsphere_resource_pool                = "sfo-w01-rp01"
 vsphere_set_host_for_datastore_uploads = false
