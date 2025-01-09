@@ -18,7 +18,7 @@ vm_guest_os_type = "other5xLinux64Guest"
 vm_firmware = "efi-secure"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/linux/debian/12/amd64"
+iso_datastore_path       = "ISO/Linux/Debian/12/amd64"
 iso_content_library_item = "debian-12.8.0-amd64-netinst"
 iso_file                 = "debian-12.8.0-amd64-netinst.iso"
 
