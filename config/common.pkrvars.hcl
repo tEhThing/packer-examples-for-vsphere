@@ -15,7 +15,7 @@ common_remove_cdrom         = true
 
 // Template and Content Library Settings
 common_template_conversion         = false
-common_content_library             = "Linux Distro"
+common_content_library             = "Templates"
 common_content_library_enabled     = true
 common_content_library_ovf         = true
 common_content_library_destroy     = true
@@ -26,7 +26,7 @@ common_ovf_export_enabled   = false
 common_ovf_export_overwrite = true
 
 // Removable Media Settings
-common_iso_datastore               = "CT2-Migration-Vol-01"
+common_iso_datastore               = "PURE-C-PLAT-01"
 common_iso_content_library         = "sfo-w01-lib01"
 common_iso_content_library_enabled = false
 
