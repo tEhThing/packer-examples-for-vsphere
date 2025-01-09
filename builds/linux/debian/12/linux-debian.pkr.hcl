@@ -142,7 +142,7 @@ source "vsphere-iso" "linux-debian" {
   boot_wait     = var.vm_boot_wait
   boot_command = [
     // This waits for 3 seconds, sends the "c" key, and then waits for another 3 seconds. In the GRUB boot loader, this is used to enter command line mode.
-    "<wait3s>c<wait3s>",
+    "<wait5s>c<wait5s>",
     // This types a command to load the Linux kernel from the specified path.
     "linux /install.amd/vmlinuz",
     // This types a string that sets the auto-install/enable option to true. This is used to automate the installation process.
