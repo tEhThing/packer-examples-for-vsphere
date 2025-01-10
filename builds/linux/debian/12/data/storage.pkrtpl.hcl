@@ -1,4 +1,3 @@
-# File 2: CIS/Debian Best Practices Partitioning (cis_partitioning.cfg)
 d-i partman-auto/method string regular
 
 # Use the first disk for partitioning
