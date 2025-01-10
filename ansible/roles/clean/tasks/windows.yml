@@ -1,0 +1,2 @@
+- name: Run Sysprep and shutdown the machine
+  win_command: 'C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown'

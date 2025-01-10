@@ -38,7 +38,7 @@ data "git-repository" "cwd" {}
 //  Defines the local variables.
 
 locals {
-  build_by          = "Built by: HashiCorp Packer ${packer.version}"
+  build_by          = "Built by: IQX CLoud ${packer.version}"
   build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version     = data.git-repository.cwd.head
   build_description = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
