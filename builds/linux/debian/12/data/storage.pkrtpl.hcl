@@ -7,7 +7,7 @@ d-i partman-auto/disk string /dev/sda
 # Custom partitioning recipe for CIS/Debian best practices
 d-i partman-auto/expert_recipe string \
       multi :: \
-              512 512 512 fat32 \
+              256 256 256 fat32 \
                       $primary{ } $bootable{ } \
                       method{ efi } format{ } \
                       use_filesystem{ } filesystem{ fat32 } \
@@ -42,6 +42,10 @@ d-i partman-auto/expert_recipe string \
                       use_filesystem{ } filesystem{ ext4 } \
                       mountpoint{ /home } \
               .
+
+# Ensure the partition table is GPT - this is required for EFI
+d-i partman-partitioning/choose_label select gpt
+d-i partman-partitioning/default_label string gpt
 
 # Automatically partition the disk without confirmation
 d-i partman-partitioning/confirm_write_new_label boolean true
