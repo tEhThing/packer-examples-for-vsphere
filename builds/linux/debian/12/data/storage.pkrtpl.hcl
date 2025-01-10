@@ -7,8 +7,14 @@ d-i partman-auto/disk string /dev/sda
 # Custom partitioning recipe for CIS/Debian best practices
 d-i partman-auto/expert_recipe string \
       multi :: \
-              256 256 256 ext2 \
+              256 256 256 fat32 \
                       $primary{ } $bootable{ } \
+                      method{ format } format{ } \
+                      use_filesystem{ } filesystem{ fat32 } \
+                      mountpoint{ /boot/efi } \
+              . \
+              256 256 256 ext2 \
+                      $primary{ } \
                       method{ format } format{ } \
                       use_filesystem{ } filesystem{ ext2 } \
                       mountpoint{ /boot } \
