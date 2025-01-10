@@ -67,7 +67,7 @@ locals {
         gateway = var.vm_ip_gateway
         dns     = var.vm_dns_list
       })
-      storage = templatefile(local.storage_template, {
+      storage = templatefile("${abspath(path.root)}/data/storage.pkrtpl.hcl", {
         device     = var.vm_disk_device
         swap       = var.vm_disk_use_swap
         partitions = var.vm_disk_partitions
@@ -82,7 +82,6 @@ locals {
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${local.build_version}"
   bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
   bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
-  storage_template    = "${abspath(path.root)}/data/${var.storage_configuration}_storage.pkrtpl.hcl"
 }
 
 //  BLOCK: source

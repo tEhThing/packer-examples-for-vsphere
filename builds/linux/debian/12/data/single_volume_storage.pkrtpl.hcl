@@ -11,6 +11,12 @@ d-i partman-partitioning/default_label string gpt
 d-i partman-basicfilesystems/no_swap boolean false
 d-i partman-auto/expert_recipe string \
   custom :: \
+    1 1 512 fat32 \
+    $primary{ } $bootable{ } \
+    method{ efi } format{ } \
+    use_filesystem{ } filesystem{ fat32 } \
+    mountpoint{ /boot/efi } \
+    . \
     100 100 -1 ext4 \
     $primary{ } \
     method{ format } \

@@ -14,6 +14,12 @@ d-i partman-partitioning/default_label string gpt
 d-i partman-basicfilesystems/no_swap boolean false
 d-i partman-auto/expert_recipe string \
   custom :: \
+    1 1 512 fat32 \
+    $primary{ } $bootable{ } \
+    method{ efi } format{ } \
+    use_filesystem{ } filesystem{ fat32 } \
+    mountpoint{ /boot/efi } \
+    . \
     100 100 512 ext4 \
     $primary{ } \
     method{ format } \
@@ -22,57 +28,38 @@ d-i partman-auto/expert_recipe string \
     filesystem{ ext4 } \
     mountpoint{ /boot } \
     . \
-    100 100 512 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
-    mountpoint{ /boot/efi } \
-    . \
     100 100 -1 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
+    $lvmok{ } in_vg{ vg_root } lv_name{ root } \
+    method{ format } format{ } \
+    use_filesystem{ } filesystem{ ext4 } \
     mountpoint{ / } \
     . \
-    100 100 4096 swap \
-    $primary{ } \
-    method{ swap } \
-    format{ } \
+    100 100 4096 linux-swap \
+    $lvmok{ } in_vg{ vg_root } lv_name{ swap } \
+    method{ swap } format{ } \
     . \
     100 100 4096 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
+    $lvmok{ } in_vg{ vg_root } lv_name{ var } \
+    method{ format } format{ } \
+    use_filesystem{ } filesystem{ ext4 } \
     mountpoint{ /var } \
     . \
     100 100 4096 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
+    $lvmok{ } in_vg{ vg_root } lv_name{ var_log } \
+    method{ format } format{ } \
+    use_filesystem{ } filesystem{ ext4 } \
     mountpoint{ /var/log } \
     . \
     100 100 4096 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
+    $lvmok{ } in_vg{ vg_root } lv_name{ var_log_audit } \
+    method{ format } format{ } \
+    use_filesystem{ } filesystem{ ext4 } \
     mountpoint{ /var/log/audit } \
     . \
     100 100 4096 ext4 \
-    $primary{ } \
-    method{ format } \
-    format{ } \
-    use_filesystem{ } \
-    filesystem{ ext4 } \
+    $lvmok{ } in_vg{ vg_root } lv_name{ home } \
+    method{ format } format{ } \
+    use_filesystem{ } filesystem{ ext4 } \
     mountpoint{ /home } \
     . \
 

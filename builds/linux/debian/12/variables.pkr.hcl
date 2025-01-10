@@ -439,17 +439,10 @@ variable "common_hcp_packer_registry_enabled" {
   description = "Enable the HCP Packer registry."
   default     = false
 }
-
 // Additional Settings
 
 variable "additional_packages" {
   type        = list(string)
   description = "Additional packages to install."
   default     = []
-}
-
-variable "storage_configuration" {
-  type        = string
-  description = "Select the storage configuration. Options: 'single_volume' or 'cis_best_practices'. Defaults to 'single_volume'."
-  default     = "single_volume" # or "cis_best_practices"
 }
