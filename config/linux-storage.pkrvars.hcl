@@ -30,7 +30,7 @@ vm_disk_partitions = [
       fstype = "ext4",
     },
     mount = {
-      path    = "/",
+      path    = "/mnt/root",
       options = "",
     },
     volume_group = "",  // This is a regular partition, not LVM
