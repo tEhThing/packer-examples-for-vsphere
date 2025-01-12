@@ -10,7 +10,7 @@
 */
 
 // Default Account Credentials
-build_username           = "iqxca"
-build_password           = "1QXCl0ud70ca7@dm!n"
-build_password_encrypted = "95912205112653007161598ad9d7e1eb7451d848ca4e7afe5941a25c7ce03a1eb77b5e3ac863f693709441216ad136410996534260a8848b6b7dc163bfec52ef"
-build_key                = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICS6OEUFoWTvMwDYIpgoii0daxay8WRm/Wyi78NdqcyD iqxca@JB1-APP01"
+build_username           = "packer"
+build_password           = "VMw@re123!"
+build_password_encrypted = "$6$KspR8KgZFVxDOiiF$n4hhyeSGgamrz25mqvOfnK5xm6blwDJftlQZy0H60pwRdPKXsf996/lLzFrfW0H/ZHoE.jEPgVmFZpmgce6jX0"
+build_key                = "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== packer@example.com"
