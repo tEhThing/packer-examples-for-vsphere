@@ -113,7 +113,3 @@ d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
-
-# Mount /mnt/root to /target
-d-i preseed/early_command string \
-    mkdir -p /target/mnt/root && mount /dev/sda2 /target/mnt/root && mount --bind /target/mnt/root /target
