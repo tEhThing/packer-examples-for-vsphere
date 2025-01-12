@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Simplified storage variables for a single-user Debian system with LVM and EFI boot.
+    Simplified storage variables for a single-user Debian system with separate partitions for /boot, /boot/efi, and LVM for root.
 */
 
 // VM Storage Settings
@@ -23,8 +23,21 @@ vm_disk_partitions = [
     volume_group = "",  // No LVM here
   },
   {
+    name = "boot"
+    size = 1024,  // 1GB for the boot partition (adjust as needed)
+    format = {
+      label  = "BOOTFS",
+      fstype = "ext4",  // Boot partition should be ext4
+    },
+    mount = {
+      path    = "/boot",  // Mount the boot partition at /boot
+      options = "",
+    },
+    volume_group = "",  // No LVM here
+  },
+  {
     name = "lvm_partition"  // Partition for LVM setup
-    size = -1,  // Use remaining space after EFI partition
+    size = -1,  // Use remaining space after EFI and boot partitions
     format = {
       label  = "LVM_PV",  // Label the partition as a physical volume for LVM
       fstype = "LVM",  // LVM partition
@@ -44,7 +57,7 @@ vm_disk_lvm = [
     partitions : [
       {
         name = "lv_swap",
-        size = 2048,  // Size for swap
+        size = 2048,  // Size for swap (2GB)
         format = {
           label  = "SWAPFS",
           fstype = "swap",
@@ -59,7 +72,7 @@ vm_disk_lvm = [
         size = -1,  // Use remaining space for root
         format = {
           label  = "ROOTFS",
-          fstype = "ext4",
+          fstype = "ext4",  // Root filesystem formatted as ext4
         },
         mount = {
           path    = "/",
