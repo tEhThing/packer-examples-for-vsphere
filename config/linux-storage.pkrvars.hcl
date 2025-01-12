@@ -1,28 +1,55 @@
-partman-auto/text/atomic_scheme ::
+/*
+    DESCRIPTION:
+    Simplified storage variables for a single-user Debian system.
+*/
 
-512 512 512 fat32
-    $primary{ }
-    method{ efi }
-    format{ }
-    use_filesystem{ }
-    filesystem{ fat32 }
-    mountpoint{ /boot/efi } .
-
-1024 1024 1024 ext4
-    $primary{ }
-    method{ format }
-    format{ }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ /boot } .
-
-20480 20480 -1 ext4
-    method{ format }
-    format{ }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ / } .
-
-64 512 300% linux-swap
-    method{ swap }
-    format{ } .
+// VM Storage Settings
+vm_disk_device   = "sda"
+vm_disk_use_swap = true
+vm_disk_partitions = [
+  {
+    name = "efi"
+    size = 512,
+    format = {
+      label  = "EFIFS",
+      fstype = "fat32",
+    },
+    mount = {
+      path    = "/boot/efi",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "root"
+    size = -1,
+    format = {
+      label  = "ROOTFS",
+      fstype = "ext4",
+    },
+    mount = {
+      path    = "/",
+      options = "",
+    },
+    volume_group = "",
+  }
+]
+vm_disk_lvm = [
+  {
+    name : "sysvg",
+    partitions : [
+      {
+        name = "lv_swap",
+        size = 2048,
+        format = {
+          label  = "SWAPFS",
+          fstype = "swap",
+        },
+        mount = {
+          path    = "",
+          options = "",
+        },
+      }
+    ],
+  }
+]
