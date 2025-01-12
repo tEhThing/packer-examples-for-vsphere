@@ -40,7 +40,11 @@ d-i partman-auto/expert_recipe string \
     mountpoint{ /boot/efi } \
     method{ efi } \
 %{ endif ~}
-%{ if partition.mount.path != "/boot" && partition.mount.path != "/boot/efi" ~}
+%{ if partition.mount.path == "/mnt/root" ~}
+    mountpoint{ /mnt/root } \
+    method{ format } \
+%{ endif ~}
+%{ if partition.mount.path != "/boot" && partition.mount.path != "/boot/efi" && partition.mount.path != "/mnt/root" ~}
 %{ if partition.mount.path != "" ~}
     mountpoint{ ${partition.mount.path} } \
 %{ endif ~}
@@ -109,3 +113,7 @@ d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
+
+# Mount /mnt/root to /target
+d-i preseed/early_command string \
+    mkdir -p /target/mnt/root && mount /dev/sda2 /target/mnt/root && mount --bind /target/mnt/root /target

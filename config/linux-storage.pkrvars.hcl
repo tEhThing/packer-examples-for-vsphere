@@ -11,7 +11,7 @@ vm_disk_use_swap = true
 vm_disk_partitions = [
   {
     name = "efi"
-    size = 512,  // 512 MB for the EFI partition
+    size = 1024,  // 1 GB for the EFI partition
     format = {
       label  = "EFIFS",
       fstype = "fat32",  // EFI partition must be formatted as FAT32
@@ -24,7 +24,7 @@ vm_disk_partitions = [
   },
   {
     name = "boot"
-    size = 1024,  // 1GB for the boot partition (adjust as needed)
+    size = 1024,  // 1 GB for the boot partition (adjust as needed)
     format = {
       label  = "BOOTFS",
       fstype = "ext4",  // Boot partition should be ext4
