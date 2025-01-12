@@ -26,7 +26,7 @@ ${network}
 
 # Mirror settings
 d-i mirror/country string manual
-d-i mirror/http/hostname string deb.debian.org
+d-i mirror/http/hostname string cdn-fastly.deb.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
 

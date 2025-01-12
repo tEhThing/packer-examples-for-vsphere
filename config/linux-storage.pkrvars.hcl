@@ -1,20 +1,23 @@
-# © Broadcom. All Rights Reserved.
-# The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
-# SPDX-License-Identifier: BSD-2-Clause
-
-/*
-    DESCRIPTION:
-    Storage variables used for Linux builds.
-    - Variables are passed to and used by guest operating system configuration files (e.g., ks.cfg).
-*/
-
-// VM Storage Settings
+// Simple VM Storage Settings
 vm_disk_device   = "sda"
 vm_disk_use_swap = true
 vm_disk_partitions = [
   {
-    name = "boot"
-    size = 487,
+    name = "efi",
+    size = 512,
+    format = {
+      label  = "EFIFS",
+      fstype = "fat32",
+    },
+    mount = {
+      path    = "/boot/efi",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "boot",
+    size = 1024,
     format = {
       label  = "BOOTFS",
       fstype = "ext4",
@@ -26,47 +29,17 @@ vm_disk_partitions = [
     volume_group = "",
   },
   {
-    name = "lvm"
-    size = 15500,
+    name = "root",
+    size = 20480,
     format = {
-      label  = "",
-      fstype = "",
+      label  = "ROOTFS",
+      fstype = "ext4",
     },
     mount = {
-      path    = "",
+      path    = "/",
       options = "",
     },
-    volume_group = "Debian-12-vg",
+    volume_group = "",
   },
 ]
-vm_disk_lvm = [
-  {
-    name : "Debian-12-vg",
-    partitions : [
-      {
-        name = "lv_root",
-        size = 14600,
-        format = {
-          label  = "ROOTFS",
-          fstype = "ext4",
-        },
-        mount = {
-          path    = "/",
-          options = "",
-        },
-      },
-      {
-        name = "lv_swap",
-        size = 980,
-        format = {
-          label  = "SWAPFS",
-          fstype = "swap",
-        },
-        mount = {
-          path    = "",
-          options = "",
-        },
-      },
-    ],
-  }
-]
+vm_disk_lvm = []
