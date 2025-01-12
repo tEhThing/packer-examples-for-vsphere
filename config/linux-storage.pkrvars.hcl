@@ -23,6 +23,19 @@ vm_disk_partitions = [
     volume_group = "",  // No LVM here
   },
   {
+    name = "boot"
+    size = 1024,
+    format = {
+      label  = "BOOTFS",
+      fstype = "ext4",
+    },
+    mount = {
+      path    = "/boot",
+      options = "",
+    },
+    volume_group = "",  // This is a regular partition, not LVM
+  },
+  {
     name = "root"
     size = -1,
     format = {
