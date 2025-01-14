@@ -12,7 +12,7 @@ vm_guest_os_name     = "debian"
 vm_guest_os_version  = "12.8"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "debian11_64Guest"
+vm_guest_os_type = "debian10_64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware = "efi-secure"
