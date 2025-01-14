@@ -14,7 +14,7 @@ common_tools_upgrade_policy = true
 common_remove_cdrom         = true
 
 // Template and Content Library Settings
-common_template_conversion         = false
+common_template_conversion         = true
 common_content_library             = "Templates"
 common_content_library_enabled     = true
 common_content_library_ovf         = true
